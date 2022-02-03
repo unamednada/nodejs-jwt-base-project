@@ -6,7 +6,7 @@ const validateJWT = require('./auth/validateJWT');
 
 const PORT = process.env.PORT || 8080;
 
-const app = express();
+const app = require('./app');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
