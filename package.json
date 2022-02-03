@@ -4,9 +4,9 @@
   "main": "./api/server.js",
   "scripts": {
     "prestart": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
-    "start": "nodemon .",
+    "start": "nodemon ./src",
     "test": "mocha ./tests/**/*$NAME*.test.js --exit",
-    "test:coverage": "nyc npm test"
+    "test:coverage": "nyc --include='src/**/*.js' npm run test"
   },
   "dependencies": {
     "bcrypt-nodejs": "~0.0.3",
