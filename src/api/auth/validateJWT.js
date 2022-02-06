@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
   /* Caso o token não seja informado, simplesmente retornamos
      o código de status 401 - não autorizado. */
   if (!token) {
-    return res.status(401).json({ error: 'Token não encontrado' });
+    return res.status(400).json({ message: 'Token não encontrado ou informado' });
   }
 
   try {
