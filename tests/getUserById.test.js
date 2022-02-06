@@ -59,4 +59,17 @@ describe('Testes de autenticação em /api/users/:id', () => {
     expect(userResponse.body.message)
       .to.be.equal('Token não encontrado ou informado');
   });
+
+  it('Com token válido, usuário só pode acessar seus próprios dados', async () => {
+    const { token } = loginResponse.body;
+
+    const userResponse = await chai
+      .request(server)
+      .get('/api/users/2')
+      .set('authorization', token);
+
+      expect(userResponse).to.have.status(401);
+      expect(userResponse.body.message)
+        .to.be.eq('Acesso negado');
+  });
 });
